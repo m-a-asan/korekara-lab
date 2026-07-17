@@ -143,6 +143,20 @@ h1 .accent{color:var(--amber-deep);border-bottom:6px solid rgba(176,116,28,.22)}
   background:rgba(79,129,179,.08);border-left:4px solid var(--blue);
   border-radius:0 12px 12px 0;padding:16px 22px;font-size:.92rem;color:var(--ink-soft);
 }
+.creed{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  box-shadow:var(--shadow);text-align:center;
+  padding:40px 28px;margin-bottom:26px;
+}
+.creed .c-label{
+  display:inline-block;font-size:.72rem;letter-spacing:.24em;font-weight:700;
+  color:var(--amber-deep);margin-bottom:14px;
+}
+.creed .c-text{
+  font-family:"Shippori Mincho",serif;font-size:clamp(1.15rem,2.6vw,1.5rem);
+  font-weight:700;line-height:2;color:var(--ink);
+}
+.creed .c-sub{display:block;font-size:clamp(.95rem,2vw,1.15rem);color:var(--amber-deep);margin-top:6px}
 @media(max-width:760px){.profiles{grid-template-columns:1fr}}
 
 /* activities */
@@ -275,13 +289,17 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
     <span class="eyebrow rv">ABOUT</span>
     <h2 class="rv">この研究所について</h2>
     <p class="sec-lead rv">「もう歳だから」をやめて、「これから何をしよう」に変える。それがこの研究所の研究テーマです。運営するのは、1人と1羽。</p>
+    <div class="creed rv">
+      <span class="c-label">私たちの理念</span>
+      <p class="c-text">人生は、いつからでも変えられる。<span class="c-sub">——自ら実践者となって、仲間を増やす。</span></p>
+    </div>
     <div class="profiles">
       <div class="profile rv">
         <img src="assets/masa_sq.webp" alt="MASA" width="76" height="76">
         <div>
           <h3 class="serif">MASA</h3>
           <div class="role">所長（人間）</div>
-          <p>人生後半から再挑戦中の実践者。自己投資に100万円以上かけて学んだAI活用・発信・働き方の知見を、等身大の言葉で届けます。個別コーチングの担当も。</p>
+          <p>人生後半から再挑戦中の実践者。自己投資に100万円以上かけて学んだAI活用・発信・働き方の知見を、等身大の言葉で届けます。LINEコーチングの担当も。</p>
         </div>
       </div>
       <div class="profile rv">
@@ -363,8 +381,8 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
       </a>
       <a class="card rv" href="https://m-a-asan.github.io/masa-coach-site/" target="_blank" rel="noopener">
         <span class="ico">🤝</span>
-        <h3>個別コーチング</h3>
-        <p>思考整理×行動習慣サポート。「変わりたいのに動けない」をMASAが伴走します。</p>
+        <h3>LINEコーチング</h3>
+        <p>LINEで、じっくり自分と向き合う。「変わりたいのに動けない」を、思考整理×行動習慣サポートでMASAが伴走します。</p>
         <span class="go">詳しく見る →</span>
       </a>
     </div>
@@ -453,7 +471,7 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
       <div>
         <h4>サービス</h4>
         <ul>
-          <li><a href="https://m-a-asan.github.io/masa-coach-site/" target="_blank" rel="noopener">個別コーチング</a></li>
+          <li><a href="https://m-a-asan.github.io/masa-coach-site/" target="_blank" rel="noopener">LINEコーチング</a></li>
           <li><a href="https://m-a-asan.github.io/" target="_blank" rel="noopener">LP研究所（事業者向け）</a></li>
         </ul>
       </div>
