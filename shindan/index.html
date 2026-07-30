@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="「AIオートセールスシステム 構築キット」購入者向けの数値診断ツールです。">
+<title>数値診断ツール｜AIオートセールスシステム 構築キット</title>
+<style>
+  :root{
+    --navy:#123a5c; --blue:#1a73a8; --amber:#e8a020; --amber-d:#c47800;
+    --bg:#fbfaf7; --ok:#2e7d32; --warn:#e8a020; --bad:#c62828;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Yu Gothic UI","Hiragino Kaku Gothic ProN",sans-serif;background:var(--bg);color:#333;line-height:1.7;}
+  .band{height:10px;background:linear-gradient(90deg,var(--navy),var(--blue) 60%,var(--amber));}
+  header{text-align:center;padding:36px 20px 10px;}
+  header .kicker{color:var(--amber-d);font-weight:bold;letter-spacing:2px;font-size:14px;}
+  header h1{color:var(--navy);font-size:clamp(22px,4vw,34px);}
+  header p{color:#666;font-size:15px;margin-top:6px;}
+  .wrap{max-width:860px;margin:0 auto;padding:24px 16px 80px;}
+  .card{background:#fff;border:2px solid var(--navy);border-radius:14px;box-shadow:4px 4px 0 rgba(18,58,92,.08);padding:24px;margin-bottom:22px;}
+  .card h2{color:var(--navy);font-size:20px;border-left:5px solid var(--amber);padding-left:10px;margin-bottom:14px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;}
+  .field label{display:block;font-size:14px;font-weight:bold;color:var(--navy);margin-bottom:4px;}
+  .field small{display:block;color:#888;font-size:11.5px;line-height:1.4;margin-top:2px;}
+  .field input{width:100%;padding:10px;font-size:17px;border:1.5px solid #bbb;border-radius:8px;background:#fff;}
+  .field input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,115,168,.15);}
+  .btn{display:block;width:100%;padding:16px;font-size:19px;font-weight:bold;color:#fff;background:var(--navy);border:none;border-radius:10px;cursor:pointer;margin-top:6px;}
+  .btn:hover{background:var(--blue);}
+  /* results */
+  .metric{margin-bottom:18px;}
+  .metric .mhead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;}
+  .metric .name{font-weight:bold;color:var(--navy);font-size:16px;}
+  .metric .val{font-size:22px;font-weight:bold;}
+  .bar{height:14px;background:#eee;border-radius:999px;overflow:hidden;position:relative;}
+  .bar .fill{height:100%;border-radius:999px;transition:width .6s;}
+  .bar .goal{position:absolute;top:-3px;bottom:-3px;width:2.5px;background:#555;}
+  .tag{display:inline-block;font-size:12.5px;font-weight:bold;color:#fff;border-radius:999px;padding:2px 12px;margin-left:8px;vertical-align:middle;}
+  .diag{border-radius:12px;padding:18px 20px;margin-top:8px;}
+  .diag h3{font-size:17px;margin-bottom:8px;}
+  .diag ul{padding-left:22px;}
+  .diag li{margin-bottom:6px;font-size:15px;}
+  .diag.first{background:#fdecea;border:2px solid var(--bad);}
+  .diag.first h3{color:var(--bad);}
+  .diag.rest{background:#fff8e8;border:2px dashed var(--amber);}
+  .diag.rest h3{color:var(--amber-d);}
+  .diag.allok{background:#e8f5e9;border:2px solid var(--ok);}
+  .diag.allok h3{color:var(--ok);}
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px;}
+  .rules div{background:#fff;border:2px solid var(--navy);border-radius:10px;padding:12px 14px;font-size:14px;}
+  .rules b{color:var(--navy);}
+  footer{text-align:center;color:#999;font-size:12px;padding:20px;}
+  #resultArea{display:none;}
+  .note{font-size:13px;color:#777;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="band"></div>
+<header>
+  <div class="kicker">AIオートセールスシステム 構築キット 付属ツール</div>
+  <h1>📊 数値診断ツール</h1>
+  <p>数字を入れるだけで「どこが詰まっていて、何を直すべきか」を自動で判定します。</p>
+</header>
+
+<div class="wrap">
+  <div class="card">
+    <h2>STEP 1｜数字を入力（分かる範囲でOK）</h2>
+    <div class="grid">
+      <div class="field"><label>LP訪問数</label><input type="number" id="lpVisit" min="0" placeholder="例: 500"><small>登録ページが表示された回数</small></div>
+      <div class="field"><label>メルマガ登録数</label><input type="number" id="optin" min="0" placeholder="例: 100"><small>期間はLP訪問数と揃える</small></div>
+      <div class="field"><label>配信数（教育編）</label><input type="number" id="sent" min="0" placeholder="例: 1000"><small>教育ステップの延べ配信通数</small></div>
+      <div class="field"><label>開封数（教育編）</label><input type="number" id="opened" min="0" placeholder="例: 350"><small>配信スタンドの開封計測値</small></div>
+      <div class="field"><label>9通目まで到達した人数</label><input type="number" id="finished" min="0" placeholder="例: 65"><small>解除せず教育編を完走した人数</small></div>
+      <div class="field"><label>セールス編の配信人数</label><input type="number" id="salesSent" min="0" placeholder="例: 65"><small>S1通目が届いた人数</small></div>
+      <div class="field"><label>販売URLクリック人数</label><input type="number" id="clicked" min="0" placeholder="例: 12"><small>セールス編から販売ページへ</small></div>
+      <div class="field"><label>購入数</label><input type="number" id="purchased" min="0" placeholder="例: 2"><small>期間内の成約数</small></div>
+    </div>
+    <p class="note">※ 個人情報は入力しません。計算はすべてこのページ内（ブラウザ内）で完結し、どこにも送信されません。</p>
+    <button class="btn" onclick="diagnose()">診断する</button>
+  </div>
+
+  <div id="resultArea">
+    <div class="card">
+      <h2>STEP 2｜5つの指標</h2>
+      <div id="metrics"></div>
+      <p class="note">縦線＝合格ライン。バーが線に届いていない指標が改善対象です。</p>
+    </div>
+
+    <div class="card">
+      <h2>STEP 3｜処方箋（上から順に直す）</h2>
+      <div id="prescriptions"></div>
+      <div class="rules">
+        <div><b>鉄則①</b><br>出口をいじる前に入口を直す（上から順）</div>
+        <div><b>鉄則②</b><br>一度に1箇所だけ変える</div>
+        <div><b>鉄則③</b><br>50登録分のデータが溜まるまで次を変えない</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>AIオートセールスシステム 構築キット 付属ツール（購入者限定ページ）<br>このツールは成果を保証するものではなく、改善の優先順位を判断する補助ツールです。<br>入力した数字はブラウザ内だけで計算され、サーバーには送信・保存されません。<br>発行：masa（人生これから研究所）／ jinsei.korekara.lab@gmail.com</footer>
+
+<script>
+const METRICS = [
+  {id:'reg',  name:'① LP登録率',   goal:20, warn:10, unit:'%', max:50,
+   num:'optin', den:'lpVisit',
+   fixes:[
+    'キャッチコピーが「機能」ではなく「読者が得る変化」を語っているか見直す',
+    'プレゼントのタイトルを作り直す（数字＋ベネフィット＋意外性）',
+    '入力項目をメールアドレス1つだけに減らす',
+    '流入元（note記事・Xポスト）の訴求とLP冒頭の言葉を揃える']},
+  {id:'open', name:'② 開封率',     goal:30, warn:20, unit:'%', max:60,
+   num:'opened', den:'sent',
+   fixes:[
+    '件名を差し替える（まず0〜2通目から。開封の習慣はここで決まる）',
+    'SPF / DKIM / DMARC の設定を確認（迷惑メール行きの典型原因）',
+    '送信ドメインとLPのドメインを揃える',
+    '配信時刻を20〜21時に固定して2週間計測する']},
+  {id:'fin',  name:'③ 完走率',     goal:60, warn:40, unit:'%', max:100,
+   num:'finished', den:'optin',
+   fixes:[
+    '配信スタンドの解除ログで「どの通で解除が集中しているか」を特定する',
+    '2〜3通目で脱落 → 売り込み臭が出ていないか（役割違反）をチェック',
+    '全通1,200字以内に刈り込む（スマホで2分以内）',
+    '5通目（証拠）で脱落 → 実績提示が誇張に見えていないか確認']},
+  {id:'clk',  name:'④ クリック率', goal:10, warn:5,  unit:'%', max:30,
+   num:'clicked', den:'salesSent',
+   fixes:[
+    'S1通目で商品の「機能」ではなく「得られる変化」を語る',
+    'リンクを冒頭・中盤・末尾の3箇所に置く',
+    '価格・締切・条件を隠さず明記する（隠すと不信でクリックされない）']},
+  {id:'cvr',  name:'⑤ 成約率',     goal:1,  warn:0.5,unit:'%', max:5,
+   num:'purchased', den:'salesSent',
+   fixes:[
+    '販売ページを講座（メール）と同じ言葉・同じトーンで書き直す',
+    '特典を「商品の弱点を補完するもの」に再設計する',
+    'S2のQ&Aを、実際に読者から来た質問で差し替える',
+    '内容物の説明を「何が入っているか」から「何ができるようになるか」へ書き換える']},
+];
+
+function pct(n, d){ return d > 0 ? (n / d * 100) : null; }
+
+function diagnose(){
+  const v = id => parseFloat(document.getElementById(id).value);
+  let html = '', firstProblem = null, prescriptions = [], measured = 0, allPass = true;
+
+  METRICS.forEach(m => {
+    const p = pct(v(m.num), v(m.den));
+    let status, color, tag;
+    if (p === null || isNaN(p)) { status = 'nodata'; }
+    else {
+      measured++;
+      if (p >= m.goal) { status='ok';  color='var(--ok)';  tag='合格'; }
+      else if (p >= m.warn) { status='warn'; color='var(--warn)'; tag='注意'; allPass=false; }
+      else { status='bad'; color='var(--bad)'; tag='危険'; allPass=false; }
+    }
+    // metric bar
+    if (status === 'nodata') {
+      html += `<div class="metric"><div class="mhead"><span class="name">${m.name}</span>
+        <span class="val" style="color:#aaa;">未入力</span></div>
+        <div class="bar"><div class="goal" style="left:${m.goal/m.max*100}%"></div></div></div>`;
+    } else {
+      const w = Math.min(p / m.max * 100, 100);
+      html += `<div class="metric"><div class="mhead">
+        <span class="name">${m.name}<span class="tag" style="background:${color};">${tag}</span></span>
+        <span class="val" style="color:${color};">${p.toFixed(1)}${m.unit}</span></div>
+        <div class="bar"><div class="fill" style="width:${w}%;background:${color};"></div>
+        <div class="goal" style="left:${m.goal/m.max*100}%"></div></div>
+        <small style="color:#888;">合格ライン ${m.goal}${m.unit} ／ 危険ライン ${m.warn}${m.unit} 未満</small></div>`;
+      if (status !== 'ok' && !firstProblem) firstProblem = m;
+      if (status !== 'ok') prescriptions.push({m, p, first: firstProblem === m});
+    }
+  });
+
+  document.getElementById('metrics').innerHTML = html;
+
+  let ph = '';
+  if (measured === 0) {
+    ph = `<div class="diag rest"><h3>数字が入力されていません</h3><p>分子・分母のペア（例：LP訪問数と登録数）を最低1組入力してください。</p></div>`;
+  } else if (allPass) {
+    ph = `<div class="diag allok"><h3>🎉 測定できた指標はすべて合格ラインです</h3>
+      <ul><li>いまの仕組みは触らず、<b>集客量を増やす</b>フェーズです。</li>
+      <li>note週1〜2本・X毎日の発信を続け、リストの獲得単価が測れたら有料集客（号外広告等）を検討しましょう。</li>
+      <li>次の一手：二段目の商品（多段階連鎖）の企画。</li></ul></div>`;
+  } else {
+    prescriptions.forEach(({m, p, first}) => {
+      ph += `<div class="diag ${first ? 'first' : 'rest'}">
+        <h3>${first ? '🚨 最優先で直す：' : '（次の課題）'}${m.name}（${p.toFixed(1)}%）</h3>
+        <ul>${m.fixes.map(f => `<li>${f}</li>`).join('')}</ul>
+        ${first ? '<p style="font-size:13.5px;color:#a33;"><b>ここが直るまで、下の指標は触らないでください。</b>入口の数字が変わると下流の数字はすべて変わります。</p>' : ''}
+      </div>`;
+    });
+  }
+  document.getElementById('prescriptions').innerHTML = ph;
+  document.getElementById('resultArea').style.display = 'block';
+  document.getElementById('resultArea').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
