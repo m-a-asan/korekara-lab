@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>無料配布｜AIに丸投げして作る「自動で売れる仕組み」全体設計図</title>
+<meta name="description" content="一度作れば24時間働き続ける販売の仕組み。その完成形と最初の一歩を15分でつかめる小冊子（PDF12ページ＋音声版＋AIプロンプト付き）を無料配布中。">
+<style>
+  :root{--navy:#123a5c;--blue:#1a73a8;--amber:#e8a020;--amber-d:#c47800;--bg:#fbfaf7;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"Yu Gothic UI","Hiragino Kaku Gothic ProN",sans-serif;color:#333;line-height:1.9;background:#fff;}
+  .band{height:8px;background:linear-gradient(90deg,var(--navy),var(--blue) 60%,var(--amber));}
+  .hero{background:var(--bg);text-align:center;padding:52px 20px 44px;}
+  .hero .badge{display:inline-block;background:var(--navy);color:#fff;border-radius:999px;padding:6px 22px;font-weight:bold;font-size:14px;margin-bottom:18px;}
+  .hero .sub1{color:var(--amber-d);font-weight:bold;font-size:clamp(15px,3vw,19px);letter-spacing:1px;}
+  .hero h1{color:var(--navy);font-size:clamp(24px,5.5vw,40px);line-height:1.5;margin:6px 0 14px;}
+  .hero .sub2{color:#555;font-size:clamp(14px,3vw,17px);}
+  .flow{display:flex;justify-content:center;gap:8px;align-items:center;margin-top:26px;flex-wrap:wrap;}
+  .flow span{background:var(--navy);color:#fff;border-radius:10px;padding:8px 18px;font-weight:bold;font-size:14.5px;}
+  .flow span:nth-child(3){background:var(--blue);}
+  .flow span:nth-child(5){background:var(--amber);}
+  .flow b{color:var(--amber);font-size:20px;}
+  .section{max-width:660px;margin:0 auto;padding:38px 20px;}
+  .section h2{color:var(--navy);font-size:21px;border-left:5px solid var(--amber);padding-left:12px;margin-bottom:18px;}
+  ul.checks{list-style:none;}
+  ul.checks li{padding:11px 0 11px 36px;position:relative;border-bottom:1px dashed #ddd;font-size:15.5px;}
+  ul.checks li::before{content:"✔";position:absolute;left:8px;color:var(--blue);font-weight:bold;}
+  .gift{background:#fff;border:2.5px solid var(--navy);border-radius:14px;padding:22px;box-shadow:4px 4px 0 rgba(18,58,92,.08);}
+  .gift h3{color:var(--navy);font-size:17px;margin-bottom:6px;}
+  .gift .tag{display:inline-block;background:var(--amber);color:#fff;font-size:12px;font-weight:bold;border-radius:999px;padding:2px 12px;margin-right:6px;}
+  .gift + .gift{margin-top:14px;}
+  .form-box{background:var(--bg);border:2.5px solid var(--navy);border-radius:14px;padding:30px 24px;text-align:center;}
+  .form-box .ftitle{font-size:19px;font-weight:bold;color:var(--navy);margin-bottom:14px;}
+  .form-box input[type=email],
+  .form-box input[type=text]{width:100%;padding:15px;font-size:16px;border:1.5px solid #bbb;border-radius:9px;margin-bottom:10px;}
+  .form-box .namenote{font-size:12.5px;color:#666;text-align:left;line-height:1.7;margin:0 2px 16px;}
+  .form-box button{width:100%;padding:17px;font-size:18px;font-weight:bold;color:#fff;background:var(--amber);border:none;border-radius:9px;cursor:pointer;box-shadow:0 3px 0 var(--amber-d);}
+  .form-box button:hover{opacity:.92;}
+  .notes{font-size:12px;color:#777;text-align:left;margin-top:16px;line-height:1.7;}
+  .profile{background:var(--bg);border-radius:14px;padding:22px;font-size:14.5px;line-height:1.85;}
+  .profile b{color:var(--navy);font-size:16px;display:block;margin-bottom:12px;}
+  .profile p{margin:0 0 14px;}
+  .profile p:last-child{margin-bottom:0;}
+  .profile .beat{color:var(--navy);font-weight:bold;line-height:1.6;padding-left:14px;border-left:3px solid var(--amber);}
+  footer{text-align:center;font-size:12px;color:#999;padding:26px;}
+  .honest{background:#fff8e8;border:2px dashed var(--amber);border-radius:12px;padding:16px 20px;font-size:14.5px;margin-top:18px;}
+</style>
+</head>
+<body>
+<div class="band"></div>
+
+<div class="hero">
+  <div class="badge">無料プレゼント｜PDF12ページ＋音声版＋AIプロンプト</div>
+  <div class="sub1">AIに丸投げして作る</div>
+  <h1>「自動で売れる仕組み」<br>全体設計図</h1>
+  <p class="sub2">一度作れば、24時間働き続ける販売の仕組み。<br>その完成形と、最初の一歩を15分で。</p>
+  <div class="flow"><span>集客</span><b>→</b><span>教育（自動）</span><b>→</b><span>販売（自動）</span></div>
+</div>
+
+<div class="section">
+  <h2>こんな心当たりはありませんか？</h2>
+  <ul class="checks">
+    <li>副業や発信に挑戦したが、毎日の作業が続かなかった</li>
+    <li>ブログもSNSも「流行が変わるたびにやり直し」で疲れた</li>
+    <li>AIで文章を作ってみたが「きれいなだけで刺さらない」で止まっている</li>
+    <li>年齢的に「いまさら遅いかな」と思いつつ、諦めきれない</li>
+  </ul>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <h2>無料でお渡しするもの（3点セット）</h2>
+  <div class="gift">
+    <h3><span class="tag">読む</span>小冊子PDF（全12ページ）</h3>
+    <p>仕組みの完成形（全体設計図）／14年陳腐化しなかった理由／9割が挫折した壁がAIで消えた話／メール15通の役割マップ／完成までの4週間ロードマップ</p>
+  </div>
+  <div class="gift">
+    <h3><span class="tag">聴く</span>音声版（約4分30秒）</h3>
+    <p>通勤中・家事をしながら、耳だけで全体像がつかめる要約版</p>
+  </div>
+  <div class="gift">
+    <h3><span class="tag">使う</span>コピペ用AIプロンプト</h3>
+    <p>15分の質問に答えるだけで「売れる文章の原料」が揃う、AIインタビュー用プロンプト。ChatGPT・Claude・Gemini対応</p>
+  </div>
+  <div class="honest">
+    <b>先にお伝えします：</b>この資料に「誰でも」「絶対に」「必ず稼げる」という話は出てきません。お渡しするのは、2012年から構造が変わっていない仕組みの設計図と、AIで組み立てる現実的な手順です。
+  </div>
+</div>
+
+<div class="section">
+  <div class="form-box">
+    <div class="ftitle">📩 メールアドレスに今すぐお届けします</div>
+    <!-- Brevo「メール講座 登録フォーム」（2026-08-05 発行）。登録先＝リスト#3／確認メールなし／
+         送信後は present ページへ遷移。2026-08-06、Brevo側のフォームに FIRSTNAME を追加し、
+         action URL と input名5つが Brevo 生成の Simple HTML と一致することを全文字照合で確認済み。
+         ⚠️このHTMLを直すときは、Brevo側のフォーム定義（Forms →「メール講座 登録フォーム」）と
+         必ずセットで見ること。片方だけ変えると、送った値が無言で捨てられる -->
+    <form action="https://ecce8a06.sibforms.com/serve/MUIFABQc3VI44dzu377jtmb9UtDBNWIXqqlc1Ol2wyQjlktUa8Om-JO8GrDehZt-sMAYSpRseJfEBBFqmePnPd7bmjCeYIOQbz-Cx_Ns6r1bx8TudBtFbS-erAAOZaXr71ty6m0QITbOuoDYdEew7OB_TWHmh1cdBpFo79FnWifn1bd2XYPPWvRar_5f_TmXP_6ZJU4rRtGW1RqKiA==" method="POST">
+      <input type="email" name="EMAIL" placeholder="メールアドレス" required>
+      <input type="text" name="FIRSTNAME" placeholder="お名前" required>
+      <p class="namenote">普段呼ばれているお名前をご記入ください（ニックネームでも結構です）。<br>
+      10日間、一対一のつもりでお送りするので、お呼びする名前をいただけたら嬉しいです。</p>
+      <button type="submit">無料で受け取る</button>
+      <!-- 以下3つはBrevoが要求する項目（Simple HTML版の仕様）。email_address_checkはスパム対策の
+           ハニーポットなので、必ず空のまま送る -->
+      <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" aria-hidden="true">
+      <input type="hidden" name="locale" value="ja">
+      <input type="hidden" name="html_type" value="simple">
+    </form>
+    <div class="notes">
+      ※ご登録により、メール講座『自動で売れる仕組みの作り方』（全10回・1日1通）が届きます。<br>
+      ※講座のあと、教材のご案内を5回お送りします。<b>この5回も講座の一部です。</b>お伝えしてきた「売る流れ」が実際にどう組まれているかを現物でご覧いただけるので、ぜひ最後まで読んでみてください。<br>
+      ※そのあとも、考え方・具体的な手順・道具の使い方を不定期でお届けします（AI・発信・仕組みづくりが中心です）。<br>
+      ※メール内のリンクから、いつでもワンクリックで解除できます。<br>
+      ※ご登録情報は、上記メールの配信とプレゼントの送付以外には使用しません。<br>
+      ※お名前欄に明らかに不適切なご記入があった場合、配信をお断りすることがあります。<br>
+      ※発行者の氏名・所在地・お問い合わせ先は <a href="https://m-a-asan.github.io/korekara-lab/info/">運営者情報</a> をご覧ください。
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <h2>発行者</h2>
+  <div class="profile">
+    <b>masa（人生これから研究所）</b>
+    <p>「自動で売れる仕組み」を知ったのは、2012年でした。<br>
+    当時は本気で挑戦し、仕組みは形にできました。<br>
+    でも、そこから続けることができませんでした。</p>
+    <p class="beat">書けない。<br>続かない。<br>完璧を目指して止まる。</p>
+    <p>当時のぼくには、それを乗り越える方法がありませんでした。</p>
+    <p>2026年、AIを使ってもう一度挑戦しました。<br>
+    すると、何週間かけても進まなかった作業が、一気に動き始めました。</p>
+    <p class="beat">教材8章。<br>メール15通。<br>図解15枚。<br>講義動画8本。<br>音声コンテンツ。</p>
+    <p>以前なら途中で止まっていたものを、AIと一緒に最後まで形にできたのです。<br>
+    だから今は、「文章が書けないから仕組みが作れない」という時代ではないと確信しています。</p>
+    <p>現在はニュースレターを毎日配信しながら、noteやYouTube、AIアプリ開発、Kindle出版など、AIを活用した発信と実践を続けています。</p>
+  </div>
+</div>
+
+<footer>© masa（人生これから研究所）</footer>
+</body>
+</html>
