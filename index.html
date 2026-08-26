@@ -230,6 +230,31 @@ a.card:hover{transform:translateY(-4px);border-color:var(--amber);box-shadow:0 8
 /* newsletter cta */
 .cta-sec{text-align:center}
 .cta-sec p{max-width:560px;margin:0 auto 30px;color:var(--ink-soft)}
+.pick{
+  display:grid;grid-template-columns:1fr 1fr;gap:22px;
+  max-width:860px;margin:0 auto;text-align:left;
+}
+.pick-card{
+  background:var(--card,#fffdf8);border:1px solid var(--line);border-radius:14px;
+  padding:26px 24px;display:flex;flex-direction:column;
+}
+.pick-card .k{
+  font-size:.74rem;font-weight:700;letter-spacing:.08em;
+  color:var(--amber-deep);margin-bottom:10px;
+}
+.pick-card h3{
+  font-family:"Shippori Mincho",serif;font-weight:700;
+  font-size:1.06rem;line-height:1.6;margin-bottom:10px;
+}
+.pick-card p{
+  font-size:.93rem;color:var(--ink-soft);margin:0 0 18px;max-width:none;
+}
+.pick-card .who{
+  font-size:.82rem;color:var(--ink-soft);margin-top:auto;
+  padding-top:14px;border-top:1px dashed var(--line);
+}
+.pick-card .btn{margin-bottom:14px}
+@media(max-width:760px){.pick{grid-template-columns:1fr}}
 
 /* footer */
 footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem}
@@ -261,6 +286,7 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
       <li><a href="#about">研究所について</a></li>
       <li><a href="#activities">活動マップ</a></li>
       <li><a href="#coming-soon">発売予定</a></li>
+      <li><a href="#newsletter">メール講座</a></li>
       <li class="keep"><a class="nav-cta" href="https://masamark.substack.com/" target="_blank" rel="noopener">無料で読む</a></li>
     </ul>
   </div>
@@ -435,12 +461,27 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
   </div>
 </section>
 
-<section class="cta-sec">
+<section class="cta-sec" id="newsletter">
   <div class="wrap">
     <span class="eyebrow rv">NEWSLETTER</span>
     <h2 class="rv">実験の続きを、いっしょに。</h2>
-    <p class="rv">研究所の最新の実験・学び・失敗談は、無料ニュースレター「人生これから研究所」でお届けしています。登録はメールアドレスひとつ、いつでも解除できます。</p>
-    <a class="btn btn-primary rv" href="https://masamark.substack.com/" target="_blank" rel="noopener">Substackで無料購読する</a>
+    <p class="rv">どちらも無料で、メールアドレスひとつ。いつでも解除できます。中身が違うので、近いほうをお選びください。</p>
+    <div class="pick">
+      <div class="pick-card rv">
+        <div class="k">ニュースレター</div>
+        <h3>人生これから研究所</h3>
+        <p>研究所の最新の実験・学び・失敗談を、そのまま記録してお届けします。うまくいかなかった回も隠しません。</p>
+        <a class="btn btn-primary" href="https://masamark.substack.com/" target="_blank" rel="noopener">Substackで購読する</a>
+        <div class="who">人生後半の再挑戦に関心がある方へ</div>
+      </div>
+      <div class="pick-card rv">
+        <div class="k">メール講座・全7通</div>
+        <h3>ひとりで売る人へ</h3>
+        <p>売上が出ない日の落ち込み、「検討します」、断られる怖さ、黒字なのに手元に残らない理由。その正体を2日に1通でお届けします。</p>
+        <a class="btn btn-primary" href="https://korekaralab.com/mail/">7通を受け取る</a>
+        <div class="who">ひとりで商売をしている方へ</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -455,6 +496,7 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
         <h4>読む・見る</h4>
         <ul>
           <li><a href="https://masamark.substack.com/" target="_blank" rel="noopener">Substack</a></li>
+          <li><a href="https://korekaralab.com/mail/">メール講座『ひとりで売る人へ』</a></li>
           <li><a href="https://note.com/huge_pika6779" target="_blank" rel="noopener">note</a></li>
           <li><a href="https://www.youtube.com/channel/UCCoP7qh3JjolBFWfB5zSs4g" target="_blank" rel="noopener">YouTube</a></li>
           <li><a href="https://www.instagram.com/senaka.atooshi/" target="_blank" rel="noopener">Instagram</a></li>
