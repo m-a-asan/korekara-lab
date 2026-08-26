@@ -13,8 +13,14 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://korekaralab.com/mail/</loc>
+    <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://korekaralab.com/info/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

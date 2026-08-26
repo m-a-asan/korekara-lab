@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>メール講座の登録｜人生これから研究所</title>
-<!-- 🔴このページは動作確認用。原稿が決まるまで検索にもsitemapにも載せない。
-     本番の登録ページへ昇格するときに、この行と noindex を外す -->
-<meta name="robots" content="noindex,nofollow">
+<title>ひとりで売る人へ｜メール講座（全7通・無料）｜人生これから研究所</title>
+<meta name="description" content="ひとりで商売をしている人へ。売上が出ない日の落ち込み、「検討します」、断られる怖さ、黒字なのにお金がない——その正体を2日に1通、全7通でお届けする無料のメール講座です。">
+<link rel="canonical" href="https://korekaralab.com/mail/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ひとりで売る人へ｜メール講座（全7通・無料）">
+<meta property="og:description" content="売上が出ない日に落ち込むのは、メンタルが弱いからではありません。2日に1通、全7通。いつでも解除できます。">
+<meta property="og:url" content="https://korekaralab.com/mail/">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,12 +63,80 @@ button:disabled{opacity:.6;cursor:default}
 }
 .notes a{color:var(--amber-deep)}
 .back{display:inline-block;margin-top:34px;font-size:.9rem;color:var(--ink-soft)}
+h2{
+  font-family:"Shippori Mincho",serif;font-weight:600;
+  font-size:1.12rem;line-height:1.7;margin:44px 0 14px;
+}
+.checks{list-style:none;margin:0 0 8px}
+.checks li{
+  position:relative;padding-left:1.35em;margin-bottom:9px;
+}
+.checks li::before{
+  content:"—";position:absolute;left:0;color:var(--amber);
+}
+.steps{list-style:none;counter-reset:s;margin:0}
+.steps li{
+  counter-increment:s;position:relative;padding-left:3.1em;
+  margin-bottom:11px;font-size:.97rem;
+}
+.steps li::before{
+  content:counter(s) "通目";position:absolute;left:0;top:0;
+  font-size:.78rem;color:var(--amber-deep);font-weight:700;
+  letter-spacing:.02em;
+}
+.plain{
+  background:#fffdf8;border:1px solid var(--line);border-radius:12px;
+  padding:20px 20px;margin:18px 0 0;font-size:.95rem;
+}
+.plain p+p{margin-top:10px}
+.sig{margin-top:12px;font-size:.93rem;color:var(--ink-soft)}
+.formtop{margin:46px 0 16px}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <h1>メール講座の登録</h1>
+  <h1>ひとりで売る人へ</h1>
+  <p class="lead">メール講座・全7通／2日に1通／無料<br>
+  いつでもワンクリックで解除できます。</p>
+
+  <p>売上が出ない日に落ち込むのは、あなたのメンタルが弱いからではありません。<br>
+  そう考えるようになった理由を、7通に分けてお送りします。</p>
+
+  <h2>こんな覚えがあるなら</h2>
+  <ul class="checks">
+    <li>売上が出ない日は、気持ちが沈む</li>
+    <li>「検討します」と言われたきり、連絡が来ない</li>
+    <li>断られるのが怖くて、話が自信なさげになる</li>
+    <li>帳簿は黒字なのに、通帳を見ると落ち着かない</li>
+    <li>やることが多すぎて、売ること以外に時間を取られる</li>
+  </ul>
+
+  <h2>お届けする7通</h2>
+  <ol class="steps">
+    <li>落ち込むのは、弱さではなく構造の話</li>
+    <li>「検討します」の5つ目の正体は、拒絶じゃない</li>
+    <li>断られるのが怖いのは、自信の問題じゃない</li>
+    <li>黒字なのにお金がない、の正体</li>
+    <li>ひとりで抱えると止まるのは、根性が足りないからじゃない</li>
+    <li>売り込まずに売れる人は、順番が違うだけ</li>
+    <li>この6通が、そのまま「売る流れ」でした</li>
+  </ol>
+
+  <h2>売り込みはありますか</h2>
+  <div class="plain">
+    <p>7通目で、教材を1つご案内します。案内はそれだけです。</p>
+    <p>価格は最初から出します。お急ぎくださいとは言いません。
+    面談にもお呼びしません。ご不要なら、7通を読み終えたところで解除してください。
+    それでも困らないように書いています。</p>
+  </div>
+
+  <h2>書いている人</h2>
+  <p class="sig">人生これから研究所の masa です。うまくいったことも、
+  そうでなかったことも、数字のまま公開しながら書いています。<br>
+  → <a href="https://korekaralab.com/info/">運営者情報</a></p>
+
+  <h2 class="formtop">登録</h2>
   <p class="lead">メールアドレスを入れて送信すると、確認メールが届きます。<br>
   そのメールのリンクを開くと登録が完了します。</p>
 
@@ -94,9 +165,12 @@ button:disabled{opacity:.6;cursor:default}
   </div>
 
   <div class="notes">
+    ※全7通・2日に1通。7通目のあとも、考え方や手順を不定期でお届けします。<br>
     ※メール内のリンクから、<b>いつでもワンクリックで解除できます。</b><br>
-    ※ご登録情報は、このメールの配信以外には使用しません。<br>
-    ※発行者の氏名・所在地・お問い合わせ先は <a href="https://korekaralab.com/info/" target="_blank" rel="noopener">運営者情報</a> をご覧ください。
+    ※ご登録情報は、このメールの配信以外には使用しません。第三者に提供することはありません。<br>
+    ※発行者の氏名・所在地・お問い合わせ先は <a href="https://korekaralab.com/info/">運営者情報</a> をご覧ください。<br>
+    ※別途『自動で売れる仕組みの作り方』（全10回）も配信しています。<b>こちらとは内容の異なる別の講座です。</b>
+    両方に登録されると2種類のメールが届きます（<a href="https://korekaralab.com/touroku/">そちらの案内はこちら</a>）。
   </div>
 
   <a class="back" href="https://korekaralab.com/">← 人生これから研究所</a>
