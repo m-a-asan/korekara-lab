@@ -66,17 +66,17 @@
 <body>
 <div class="band"></div>
 
-<div class="hero">
+<div class="hero" data-sec="hero">
   <div class="badge">無料プレゼント｜PDF12ページ＋音声版＋AIプロンプト</div>
   <div class="sub1">2012年から、構造は変わっていない</div>
   <h1>「自動で売れる仕組み」の<br>全体像を、15分で。</h1>
   <p class="sub2">一度組み立てれば、あとは自動で動く販売の流れ。<br>その完成形と、最初の一歩を12ページにまとめました。</p>
   <div class="flow"><span>集客</span><b>→</b><span>教育（自動）</span><b>→</b><span>販売（自動）</span></div>
   <p class="honest-mini">※「誰でも」「絶対に」「必ず稼げる」という話は出てきません。<br>お渡しするのは設計図と、AIで組み立てる現実的な手順だけです。</p>
-  <a href="#form" class="cta">無料で受け取る</a>
+  <a href="#form" class="cta" data-rondo-cta data-rondo-label="CTA上・ヒーロー">無料で受け取る</a>
 </div>
 
-<div class="section">
+<div class="section" data-sec="nayami">
   <h2>こんな心当たりはありませんか？</h2>
   <ul class="checks">
     <li>副業や発信に挑戦したが、毎日の作業が続かなかった</li>
@@ -86,7 +86,7 @@
   </ul>
 </div>
 
-<div class="section" style="padding-top:0;">
+<div class="section" style="padding-top:0;" data-sec="story">
   <h2>ぼくも、同じところで止まっていました</h2>
   <div class="profile">
     <b>masa（人生これから研究所）</b>
@@ -106,7 +106,7 @@
   </div>
 </div>
 
-<div class="section" style="padding-top:0;">
+<div class="section" style="padding-top:0;" data-sec="naze">
   <h2>ただし、仕組み自体は新しいものではありません</h2>
   <div class="why">
     <p>通販サイトで買い物をしたあと。航空会社やソフト会社に登録したあと。<br>
@@ -121,10 +121,10 @@
     <span class="em">「読みたい」と言ってくれた人にだけ届く形</span>で組みます。法律上もそう決まっています。<br>
     だからこそ、一度組めば長く使えます。</p>
   </div>
-  <div class="cta-wrap"><a href="#form" class="cta">全体設計図を無料で受け取る</a></div>
+  <div class="cta-wrap"><a href="#form" class="cta" data-rondo-cta data-rondo-label="CTA中・なぜ今">全体設計図を無料で受け取る</a></div>
 </div>
 
-<div class="section" style="padding-top:0;">
+<div class="section" style="padding-top:0;" data-sec="gift">
   <h2>無料でお渡しするもの（3点セット）</h2>
   <div class="gift">
     <h3><span class="tag">読む</span>小冊子PDF（全12ページ）</h3>
@@ -145,7 +145,7 @@
   </div>
 </div>
 
-<div class="section" id="form">
+<div class="section" id="form" data-sec="form">
   <div class="form-box">
     <div class="ftitle">📩 メールアドレスに今すぐお届けします</div>
     <!-- Brevo「メール講座 登録フォーム」（2026-08-05 発行）。登録先＝リスト#3／確認メールなし／
@@ -181,6 +181,11 @@
 </div>
 
 <footer>© masa（人生これから研究所）</footer>
+<!-- Rondo LP計測（2026-08-26 設置）。区間=data-sec／CTA=data-rondo-cta。
+     URLクエリ・入力値・表示テキストは送らない（送るのは origin+pathname と
+     tag#id 等の要素識別子、data-rondo-label に明示した固定文言だけ）。
+     ⚠️Brevoの<form>と5つのinputには一切触れていない -->
+<script src="https://rondo.jinsei-korekara-lab.workers.dev/heat.js" data-page="touroku" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9961ede6882241fb98504c8c4b8fc963"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
