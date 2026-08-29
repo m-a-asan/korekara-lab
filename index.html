@@ -199,6 +199,11 @@ a.card:hover{transform:translateY(-4px);border-color:var(--amber);box-shadow:0 8
 }
 .badge.cs{background:var(--amber);color:#fff;box-shadow:0 3px 10px rgba(176,116,28,.35)}
 .badge.prep{background:#e8e0d0;color:var(--ink-soft)}
+.badge.live{background:var(--amber-deep);color:#fff;box-shadow:0 3px 10px rgba(176,116,28,.35)}
+.soon-card.live{border-style:solid;border-color:var(--amber)}
+.soon-card .go2{display:inline-block;margin-top:8px;font-weight:700;color:var(--amber-deep);text-decoration:none}
+.soon-card .go2:hover{text-decoration:underline}
+.soon-card .reader{display:block;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
 .soon-card h3{font-family:"Shippori Mincho",serif;font-size:1.08rem;line-height:1.6;margin-bottom:10px}
 .soon-card p{font-size:.87rem;color:var(--ink-soft);flex:1}
 .soon-card .meta{font-size:.78rem;color:var(--ink-soft);margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
@@ -285,7 +290,7 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
     <ul class="nav-links">
       <li><a href="#about">研究所について</a></li>
       <li><a href="#activities">活動マップ</a></li>
-      <li><a href="#coming-soon">発売予定</a></li>
+      <li><a href="#coming-soon">教材</a></li>
       <li><a href="#newsletter">研究日誌</a></li>
       <li class="keep"><a class="nav-cta" href="https://masamark.substack.com/" target="_blank" rel="noopener">無料で読む</a></li>
     </ul>
@@ -300,7 +305,7 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
       <p>「人生これから研究所」は、人間のMASAとAI社長のフクロウmasaが運営する、小さな研究所です。AI活用・学び直し・お金・働き方・発信——人生後半の再挑戦をまるごと実験して、その記録を包み隠さず公開しています。</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="https://masamark.substack.com/" target="_blank" rel="noopener">無料ニュースレターを読む</a>
-        <a class="btn btn-ghost" href="#coming-soon">発売予定の教材を見る</a>
+        <a class="btn btn-ghost" href="#coming-soon">教材を見る</a>
       </div>
     </div>
     <div class="duo">
@@ -402,9 +407,9 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
       </a>
       <a class="card rv" href="#coming-soon">
         <span class="ico">🎓</span>
-        <h3>教材（COMING SOON）</h3>
-        <p>AI活用×発信を実践形式で学べる教材を仕上げ中。発売予定のラインナップはこちら。</p>
-        <span class="go">発売予定を見る →</span>
+        <h3>教材『AIオートセールスシステム 構築キット』</h3>
+        <p>「売る仕組み」をAIと一緒に組み立てる実践キット。全8章の本編に、そのまま使えるテンプレート・プロンプト集を同梱（¥9,800）。</p>
+        <span class="go">詳しく見る →</span>
       </a>
       <a class="card rv" href="https://m-a-asan.github.io/masa-coach-site/" target="_blank" rel="noopener">
         <span class="ico">🤝</span>
@@ -418,15 +423,19 @@ footer{background:var(--dark);color:#b8ab96;padding:60px 0 36px;font-size:.86rem
 
 <section class="soon" id="coming-soon">
   <div class="wrap">
-    <span class="eyebrow rv">COMING SOON</span>
-    <h2 class="rv">発売予定</h2>
-    <p class="sec-lead rv">いま研究所で仕上げの真っ最中。発売はニュースレターとnoteで最初にお知らせします。</p>
+    <span class="eyebrow rv">PRODUCTS</span>
+    <h2 class="rv">教材</h2>
+    <p class="sec-lead rv">第1弾を発売しました。続きはいま研究所で仕上げの真っ最中です。発売はニュースレターとnoteで最初にお知らせします。</p>
     <div class="soon-cards">
-      <div class="soon-card rv">
-        <span class="badge cs">COMING SOON</span>
+      <div class="soon-card live rv">
+        <span class="badge live">発売中</span>
         <h3>AIオートセールスシステム 構築キット</h3>
-        <p>「売る仕組み」をAIと一緒に組み立てる実践キット。全8章の本編に、そのまま使えるテンプレート・プロンプト集を同梱予定。</p>
-        <div class="meta">販売予定：Brain　※内容・発売日は変更になる場合があります</div>
+        <p>「売る仕組み」をAIと一緒に組み立てる実践キット。全8章の本編に、そのまま使えるテンプレート・プロンプト集を同梱。</p>
+        <div class="meta">
+          Brainで販売中　¥9,800<br>
+          <a class="go2" href="https://brain-market.com/u/korekaralab/a/b2QTO1UjMgoTZsNWa0JXY" target="_blank" rel="noopener">Brainで見る →</a>
+          <span class="reader">無料メール講座にご登録の方は、<b>読者価格 ¥4,980</b> でお読みいただけます。<br><a class="go2" href="touroku/">メール講座に登録する →</a></span>
+        </div>
       </div>
       <div class="soon-card rv">
         <span class="badge cs">COMING SOON</span>
