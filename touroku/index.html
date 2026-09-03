@@ -23,7 +23,9 @@
   .flow b{color:var(--amber);font-size:20px;}
   /* 誇大広告をしないことがこの商品の差別化。ヒーローの時点で先に言い切る。
      旧版は下部の .honest まで読まないと出てこず、上（煽り）と下（否定）で温度が割れていた */
-  .hero .honest-mini{margin-top:22px;font-size:13.5px;color:#666;line-height:1.8;}
+  .hero .target{margin-top:20px;font-size:clamp(13px,2.7vw,15px);color:var(--navy);font-weight:bold;}
+  .hero .honest-mini{margin-top:14px;font-size:13.5px;color:#666;line-height:1.8;}
+  .cta-lead{font-size:15px;color:#444;line-height:1.9;text-align:left;margin:0 auto 4px;max-width:620px;}
   .section{max-width:660px;margin:0 auto;padding:38px 20px;}
   .section h2{color:var(--navy);font-size:21px;border-left:5px solid var(--amber);padding-left:12px;margin-bottom:18px;}
   ul.checks{list-style:none;}
@@ -71,12 +73,13 @@
 
 <div class="hero" data-sec="hero">
   <div class="badge">無料プレゼント｜PDF12ページ＋音声版＋AIプロンプト</div>
-  <div class="sub1">2012年から、構造は変わっていない</div>
+  <div class="sub1">投稿を止めると、集客も止まる——から抜ける</div>
   <h1>「自動で売れる仕組み」の<br>全体像を、15分で。</h1>
-  <p class="sub2">一度組み立てれば、あとは自動で動く販売の流れ。<br>その完成形と、最初の一歩を12ページにまとめました。</p>
+  <p class="sub2">SNSを毎日追いかけ続けなくても、読者との関係が積み上がっていく。<br>その全体像と、最初の一歩を12ページにまとめました。</p>
   <div class="flow"><span>集客</span><b>→</b><span>教育（自動）</span><b>→</b><span>販売（自動）</span></div>
+  <p class="target">副業や発信に挑戦したけれど、続かなかった方へ。</p>
   <p class="honest-mini">※「誰でも」「絶対に」「必ず稼げる」という話は出てきません。<br>お渡しするのは設計図と、AIで組み立てる現実的な手順だけです。</p>
-  <a href="#form" class="cta" data-rondo-cta data-rondo-label="CTA上・ヒーロー">無料で受け取る</a>
+  <a href="#form" class="cta" data-rondo-cta data-rondo-label="CTA上・ヒーロー">無料で全体像を受け取る</a>
 </div>
 
 <div class="section" data-sec="nayami">
@@ -131,20 +134,27 @@
   <h2>無料でお渡しするもの（3点セット）</h2>
   <div class="gift">
     <h3><span class="tag">読む</span>小冊子PDF（全12ページ）</h3>
-    <p class="lead">「何を、どの順番で作れば終わるのか」が、1枚の図で見えます。</p>
+    <p class="lead">「何を、どの順番で作れば終わるのか」が、1枚の図で見えます。<br>全体像が分からないまま、SNSとAIを個別に頑張る状態から抜けるための1枚です。</p>
     <p class="toc">収録：仕組みの完成形（全体設計図）／14年陳腐化しなかった理由／9割が挫折した壁がAIで消えた話／メール15通の役割マップ／完成までの4週間ロードマップ</p>
   </div>
   <div class="gift">
     <h3><span class="tag">聴く</span>音声版（約4分30秒）</h3>
-    <p class="lead">読む時間が取れない日でも、全体像だけは入ります。通勤中・家事をしながら、耳だけで。</p>
+    <p class="lead">読む時間が取れない日でも、全体像だけは入ります。通勤中・家事をしながら、耳だけで。<br>「結局どういう順番なのか」だけなら、これ1本で掴めます。</p>
   </div>
   <div class="gift">
     <h3><span class="tag">使う</span>コピペ用AIプロンプト</h3>
-    <p class="lead">真っ白な画面の前で止まらないための道具です。15分の質問に答えるだけで「売れる文章の原料」が揃います。</p>
+    <p class="lead">真っ白な画面の前で止まらないための道具です。15分の質問に答えるだけで「売れる文章の原料」が揃います。<br>「AIに何を指示すればいいか分からない」から、実際に手が動くところまで持っていきます。</p>
     <p class="toc">ChatGPT・Claude・Gemini対応。コピーして貼るだけで使えます。</p>
   </div>
+  <p class="cta-lead">無料ですが、「とりあえず登録者を集める」ための内容にはしていません。<br>
+  これだけで、自分がこれから何を作ればいいのかが見えるところまで持っていきます。</p>
   <div class="honest">
     <b>もう一度お伝えします：</b>この資料に「誰でも」「絶対に」「必ず稼げる」という話は出てきません。お渡しするのは、2012年から構造が変わっていない仕組みの設計図と、AIで組み立てる現実的な手順です。
+  </div>
+  <div class="cta-wrap" style="margin-top:30px;">
+    <p class="cta-lead">ここまで読んで「毎回ゼロから集客するのは、もう終わりにしたい」と思った方へ。<br>
+    まずは無料教材で、<b>集客 → 信頼 → 販売</b>までの全体像を確認してみてください。15分あれば読めます。</p>
+    <a href="#form" class="cta" data-rondo-cta data-rondo-label="CTA下・特典の後">無料で全体像を受け取る</a>
   </div>
 </div>
 
@@ -166,7 +176,7 @@
       <div aria-hidden="true" style="position:absolute;left:-9999px">
         <input type="text" name="website" tabindex="-1" autocomplete="off">
       </div>
-      <button type="submit">無料で受け取る</button>
+      <button type="submit">無料で全体像を受け取る</button>
       <p class="status" id="rondo-status" role="status" aria-live="polite"></p>
       <p class="namenote">送信すると<b>確認メール</b>が届きます。そのメールのリンクを押すと登録完了です。<br>
       小冊子・音声・プロンプトは、登録完了の直後に届く1通目でお渡しします。</p>
@@ -226,7 +236,7 @@
         if (window.turnstile) window.turnstile.reset();
       } finally {
         button.disabled = false;
-        button.textContent = '無料で受け取る';
+        button.textContent = '無料で全体像を受け取る';
       }
     });
   })();
