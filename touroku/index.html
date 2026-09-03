@@ -12,7 +12,12 @@
   body{font-family:"Yu Gothic UI","Hiragino Kaku Gothic ProN",sans-serif;color:#333;line-height:1.9;background:#fff;}
   .band{height:8px;background:linear-gradient(90deg,var(--navy),var(--blue) 60%,var(--amber));}
   .hero{background:var(--bg);text-align:center;padding:52px 20px 44px;}
-  .hero .badge{display:inline-block;background:var(--navy);color:#fff;border-radius:999px;padding:6px 22px;font-weight:bold;font-size:14px;margin-bottom:18px;}
+  /* 中身を1つのピルに詰めると375pxで単語の途中に改行が入り、最初に目に入る要素が
+     壊れて見えた（2026-09-03修正）。見出しのピル＋中身のチップ3枚に分離する。 */
+  .hero .badge{display:inline-block;background:var(--navy);color:#fff;border-radius:999px;padding:6px 24px;font-weight:bold;font-size:14px;letter-spacing:1px;}
+  .hero .gift-chips{display:flex;justify-content:center;align-items:stretch;gap:7px;flex-wrap:wrap;list-style:none;margin:11px 0 18px;}
+  .hero .gift-chips li{background:#fff;border:1.5px solid var(--navy);border-radius:9px;padding:6px 11px;font-size:13px;font-weight:bold;color:var(--navy);white-space:nowrap;line-height:1.35;}
+  .hero .gift-chips li i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.5px;color:var(--amber-d);}
   .hero .sub1{color:var(--amber-d);font-weight:bold;font-size:clamp(15px,3vw,19px);letter-spacing:1px;}
   .hero h1{color:var(--navy);font-size:clamp(24px,5.5vw,40px);line-height:1.5;margin:6px 0 14px;}
   .hero .sub2{color:#555;font-size:clamp(14px,3vw,17px);}
@@ -72,7 +77,12 @@
 <div class="band"></div>
 
 <div class="hero" data-sec="hero">
-  <div class="badge">無料プレゼント｜PDF12ページ＋音声版＋AIプロンプト</div>
+  <div class="badge">無料プレゼント</div>
+  <ul class="gift-chips">
+    <li><i>読む</i>PDF 12ページ</li>
+    <li><i>聴く</i>音声 4分30秒</li>
+    <li><i>使う</i>AIプロンプト</li>
+  </ul>
   <div class="sub1">投稿を止めると、集客も止まる——から抜ける</div>
   <h1>「自動で売れる仕組み」の<br>全体像を、15分で。</h1>
   <p class="sub2">SNSを毎日追いかけ続けなくても、読者との関係が積み上がっていく。<br>その全体像と、最初の一歩を12ページにまとめました。</p>
