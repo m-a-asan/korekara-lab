@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>無料配布｜「自動で売れる仕組み」の全体像を15分で｜人生これから研究所</title>
 <meta name="description" content="一度組み立てれば自動で動く販売の流れ。その完成形と最初の一歩を15分でつかめる小冊子（PDF12ページ＋音声版＋AIプロンプト）を無料配布中。「誰でも必ず稼げる」という話は出てきません。">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <style>
   :root{--navy:#123a5c;--blue:#1a73a8;--amber:#e8a020;--amber-d:#c47800;--bg:#fbfaf7;}
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -39,6 +40,8 @@
   .form-box input[type=email],
   .form-box input[type=text]{width:100%;padding:15px;font-size:16px;border:1.5px solid #bbb;border-radius:9px;margin-bottom:10px;}
   .form-box .namenote{font-size:12.5px;color:#666;text-align:left;line-height:1.7;margin:0 2px 16px;}
+  .form-box .cf-turnstile{margin:6px 0 12px;display:flex;justify-content:center;}
+  .form-box .status{margin-top:12px;font-size:14px;min-height:1.6em;color:var(--navy);}
   .form-box button{width:100%;padding:17px;font-size:18px;font-weight:bold;color:#fff;background:var(--amber);border:none;border-radius:9px;cursor:pointer;box-shadow:0 3px 0 var(--amber-d);}
   .form-box button:hover{opacity:.92;}
   /* ヒーロー／本文中から #form へ飛ばすCTA。旧版はボタンが最下部の1つだけで、
@@ -147,34 +150,35 @@
 
 <div class="section" id="form" data-sec="form">
   <div class="form-box">
-    <div class="ftitle">📩 メールアドレスに今すぐお届けします</div>
-    <!-- Brevo「メール講座 登録フォーム」（2026-08-05 発行）。登録先＝リスト#3／確認メールなし／
-         送信後は present ページへ遷移。2026-08-06、Brevo側のフォームに FIRSTNAME を追加し、
-         action URL と input名5つが Brevo 生成の Simple HTML と一致することを全文字照合で確認済み。
-         ⚠️このHTMLを直すときは、Brevo側のフォーム定義（Forms →「メール講座 登録フォーム」）と
-         必ずセットで見ること。片方だけ変えると、送った値が無言で捨てられる
-         ※2026-08-13のLP改稿では、このform要素とinput5つには一切手を触れていない -->
-    <form action="https://ecce8a06.sibforms.com/serve/MUIFABQc3VI44dzu377jtmb9UtDBNWIXqqlc1Ol2wyQjlktUa8Om-JO8GrDehZt-sMAYSpRseJfEBBFqmePnPd7bmjCeYIOQbz-Cx_Ns6r1bx8TudBtFbS-erAAOZaXr71ty6m0QITbOuoDYdEew7OB_TWHmh1cdBpFo79FnWifn1bd2XYPPWvRar_5f_TmXP_6ZJU4rRtGW1RqKiA==" method="POST">
-      <input type="email" name="EMAIL" placeholder="メールアドレス" required>
-      <input type="text" name="FIRSTNAME" placeholder="お名前" required>
-      <p class="namenote">普段呼ばれているお名前をご記入ください（ニックネームでも結構です）。<br>
-      10日間、一対一のつもりでお送りするので、お呼びする名前をいただけたら嬉しいです。</p>
+    <div class="ftitle">📩 メールアドレスにお届けします</div>
+    <!-- Rondo 登録フォーム（2026-09-03 Brevoから切替）。
+         受け口＝ https://rondo.jinsei-korekara-lab.workers.dev/api/subscribe
+         scenario: 'shikumi' が「自動で売れる仕組みの作り方」(全16通)を指す。
+         ⚠️この値は Worker 側の SCENARIOS を引いて解決される。キー名を変えると
+         無言で既定シナリオ（日誌）へ落ちるので、src/scenarios.config.mjs とセットで見ること。
+         ⚠️Rondoはダブルオプトイン＝送信後に確認メールが届き、リンクを押して初めて登録完了。
+         特典は登録完了直後に届く1通目に入っている（このページからは遷移しない）。
+         ⚠️Rondoは読者名を扱わないため、旧BrevoのFIRSTNAME欄は廃止した。 -->
+    <form id="rondo-subscribe">
+      <input type="email" name="email" placeholder="メールアドレス" autocomplete="email" spellcheck="false" required>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAEbRcNOfgWlNIWPL"></div>
+      <!-- ハニーポット。人間には見えない。必ず空のまま送る -->
+      <div aria-hidden="true" style="position:absolute;left:-9999px">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </div>
       <button type="submit">無料で受け取る</button>
-      <!-- 以下3つはBrevoが要求する項目（Simple HTML版の仕様）。email_address_checkはスパム対策の
-           ハニーポットなので、必ず空のまま送る -->
-      <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" aria-hidden="true">
-      <input type="hidden" name="locale" value="ja">
-      <input type="hidden" name="html_type" value="simple">
+      <p class="status" id="rondo-status" role="status" aria-live="polite"></p>
+      <p class="namenote">送信すると<b>確認メール</b>が届きます。そのメールのリンクを押すと登録完了です。<br>
+      小冊子・音声・プロンプトは、登録完了の直後に届く1通目でお渡しします。</p>
     </form>
     <div class="notes">
       <!-- 並び順：不安を消す2行を先に、開示（通数・案内5回）を後に。
            特電法・特商法まわりの記載事項は旧版から1つも削っていない -->
       ※メール内のリンクから、<b>いつでもワンクリックで解除できます。</b><br>
-      ※ご登録情報は、上記メールの配信とプレゼントの送付以外には使用しません。<br>
-      ※ご登録により、メール講座『自動で売れる仕組みの作り方』（全10回・1日1通）が届きます。<br>
-      ※講座のあと、教材のご案内を5回お送りします。<b>この5回も講座の一部です。</b>お伝えしてきた「売る流れ」が実際にどう組まれているかを現物でご覧いただけるので、ぜひ最後まで読んでみてください。<br>
+      ※ご登録情報は、上記メールの配信以外には使用しません。第三者に提供することはありません。<br>
+      ※ご登録により、メール講座『自動で売れる仕組みの作り方』（全10回・1日1通ペース）が届きます。<br>
+      ※講座のあと、教材のご案内を6回お送りします。<b>この6回も講座の一部です。</b>お伝えしてきた「売る流れ」が実際にどう組まれているかを現物でご覧いただけるので、ぜひ最後まで読んでみてください。<br>
       ※そのあとも、考え方・具体的な手順・道具の使い方を不定期でお届けします（AI・発信・仕組みづくりが中心です）。<br>
-      ※お名前欄に明らかに不適切なご記入があった場合、配信をお断りすることがあります。<br>
       ※発行者の氏名・所在地・お問い合わせ先は <a href="https://korekaralab.com/info/" target="_blank" rel="noopener">運営者情報</a> をご覧ください。
     </div>
   </div>
@@ -184,7 +188,49 @@
 <!-- Rondo LP計測（2026-08-26 設置）。区間=data-sec／CTA=data-rondo-cta。
      URLクエリ・入力値・表示テキストは送らない（送るのは origin+pathname と
      tag#id 等の要素識別子、data-rondo-label に明示した固定文言だけ）。
-     ⚠️Brevoの<form>と5つのinputには一切触れていない -->
+     ⚠️2026-09-03にフォームはBrevoからRondoへ切替済み（計測タグ自体は変更なし） -->
+<script>
+  // Rondoへの登録送信。/mail/ と同じ実装で、違いは scenario を送る1行だけ。
+  (() => {
+    const form = document.getElementById('rondo-subscribe');
+    const status = document.getElementById('rondo-status');
+    const button = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const cfToken = data.get('cf-turnstile-response');
+      if (!cfToken) {
+        status.textContent = 'bot確認を完了してから、もう一度お試しください。';
+        return;
+      }
+      button.disabled = true;
+      button.textContent = '送信中…';
+      status.textContent = '';
+      try {
+        const response = await fetch('https://rondo.jinsei-korekara-lab.workers.dev/api/subscribe', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            email: data.get('email'),
+            website: data.get('website'),
+            cfToken,
+            source: 'touroku',
+            scenario: 'shikumi',
+          }),
+        });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        form.reset();
+        status.textContent = '確認メールを送りました。受信箱のリンクを開いて登録を完了してください。';
+      } catch {
+        status.textContent = '送信できませんでした。通信状態を確認し、bot確認をやり直してください。';
+        if (window.turnstile) window.turnstile.reset();
+      } finally {
+        button.disabled = false;
+        button.textContent = '無料で受け取る';
+      }
+    });
+  })();
+</script>
 <script src="https://rondo.jinsei-korekara-lab.workers.dev/heat.js" data-page="touroku" defer></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9961ede6882241fb98504c8c4b8fc963"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
