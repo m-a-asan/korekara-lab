@@ -215,6 +215,12 @@
     const form = document.getElementById('rondo-subscribe');
     const status = document.getElementById('rondo-status');
     const button = form.querySelector('button[type="submit"]');
+    // 登録元の判別。?ref=substack-about のような短いスラッグだけを受け取り source に載せる。
+    // 任意の文字列がそのままDBへ入らないよう、英小文字・数字・ハイフン32文字までに制限する
+    // （URLクエリをそのまま送らないのは heat.js と同じ方針）。ref が無ければ従来どおり 'touroku'。
+    const ref = (new URLSearchParams(location.search).get('ref') || '')
+      .toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 32);
+    const source = ref ? 'touroku-' + ref : 'touroku';
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const data = new FormData(form);
@@ -234,7 +240,7 @@
             email: data.get('email'),
             website: data.get('website'),
             cfToken,
-            source: 'touroku',
+            source,
             scenario: 'shikumi',
           }),
         });
