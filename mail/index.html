@@ -198,6 +198,12 @@ h2{
     const form = document.getElementById('rondo-subscribe');
     const status = document.getElementById('rondo-status');
     const button = form.querySelector('button[type="submit"]');
+    // 登録元の判別。?ref=youtube のような短いスラッグだけを受け取り source に載せる。
+    // 任意の文字列がそのままDBへ入らないよう、英小文字・数字・ハイフン32文字までに制限する
+    // （/touroku/ と同じ規格。ref が無ければ 'mail'）。
+    const ref = (new URLSearchParams(location.search).get('ref') || '')
+      .toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 32);
+    const source = ref ? 'mail-' + ref : 'mail';
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const data = new FormData(form);
@@ -217,7 +223,7 @@ h2{
             email: data.get('email'),
             website: data.get('website'),
             cfToken,
-            source: 'web',
+            source,
           }),
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
