@@ -89,7 +89,36 @@
   <div class="flow"><span>集客</span><b>→</b><span>教育（自動）</span><b>→</b><span>販売（自動）</span></div>
   <p class="target">副業や発信に挑戦したけれど、続かなかった方へ。</p>
   <p class="honest-mini">※「誰でも」「絶対に」「必ず稼げる」という話は出てきません。<br>お渡しするのは設計図と、AIで組み立てる現実的な手順だけです。</p>
-  <a href="#form" class="cta" data-rondo-cta data-rondo-label="CTA上・ヒーロー">無料で全体像を受け取る</a>
+  <a href="#form-top" class="cta" data-rondo-cta data-rondo-label="CTA上・ヒーロー">無料で全体像を受け取る</a>
+</div>
+
+<!-- 2026-09-16 追加：ヒーロー直下の登録フォーム（イケハヤAI M-06）。
+     理由＝30日のヒート実測で hero到達26 → form到達13。半分が最下部のフォームまで来ない。
+     受け口・scenario・source は最下部のフォームと同一。増やしたのは「入力欄の位置」だけ。
+     ⚠️source を分けていないのは、`touroku-substack-post` 等の既存の登録元判定を壊さないため。
+     どちらのフォームが使われたかは heat の data-rondo-label（CTAクリック）で見る。 -->
+<div class="section" style="padding-top:24px;padding-bottom:24px;" data-sec="formtop">
+  <div class="form-box" id="form-top">
+    <div class="ftitle">📩 いますぐ受け取る（無料）</div>
+    <form id="rondo-subscribe-top">
+      <input type="email" name="email" placeholder="メールアドレス" autocomplete="email" spellcheck="false" required>
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAEbRcNOfgWlNIWPL"></div>
+      <!-- ハニーポット。人間には見えない。必ず空のまま送る -->
+      <div aria-hidden="true" style="position:absolute;left:-9999px">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <button type="submit" data-rondo-cta data-rondo-label="フォーム上・ヒーロー直下">無料で全体像を受け取る</button>
+      <p class="status" id="rondo-status-top" role="status" aria-live="polite"></p>
+      <p class="namenote">送信すると<b>確認メール</b>が届きます。そのメールのリンクを押すと登録完了です。<br>
+      小冊子・音声・プロンプトは、登録完了の直後に届く1通目でお渡しします。</p>
+    </form>
+    <div class="notes">
+      ※メール内のリンクから、<b>いつでもワンクリックで解除できます。</b><br>
+      ※ご登録情報は、上記メールの配信以外には使用しません。第三者に提供することはありません。<br>
+      ※ご登録により、メール講座『自動で売れる仕組みの作り方』（全10回・1日1通ペース）が届きます。講座のあと、教材のご案内を6回お送りします。<b>この6回も講座の一部です。</b><br>
+      ※発行者の氏名・所在地・お問い合わせ先は <a href="https://korekaralab.com/info/" target="_blank" rel="noopener">運営者情報</a> をご覧ください。
+    </div>
+  </div>
 </div>
 
 <div class="section" data-sec="nayami">
@@ -212,15 +241,18 @@
 <script>
   // Rondoへの登録送信。/mail/ と同じ実装で、違いは scenario を送る1行だけ。
   (() => {
-    const form = document.getElementById('rondo-subscribe');
-    const status = document.getElementById('rondo-status');
-    const button = form.querySelector('button[type="submit"]');
     // 登録元の判別。?ref=substack-about のような短いスラッグだけを受け取り source に載せる。
     // 任意の文字列がそのままDBへ入らないよう、英小文字・数字・ハイフン32文字までに制限する
     // （URLクエリをそのまま送らないのは heat.js と同じ方針）。ref が無ければ従来どおり 'touroku'。
     const ref = (new URLSearchParams(location.search).get('ref') || '')
       .toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 32);
     const source = ref ? 'touroku-' + ref : 'touroku';
+    // 2026-09-16: フォームが2つになった（ヒーロー直下＋最下部）。配線は共通・送る中身も同一。
+    const wire = (formId, statusId) => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+    const status = document.getElementById(statusId);
+    const button = form.querySelector('button[type="submit"]');
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const data = new FormData(form);
@@ -249,12 +281,16 @@
         status.textContent = '確認メールを送りました。受信箱のリンクを開いて登録を完了してください。';
       } catch {
         status.textContent = '送信できませんでした。通信状態を確認し、bot確認をやり直してください。';
-        if (window.turnstile) window.turnstile.reset();
+        // ⚠️ウィジェットが2枚あるので、引数なしのreset()では別のフォームを直しに行く
+        if (window.turnstile) window.turnstile.reset(form.querySelector('.cf-turnstile'));
       } finally {
         button.disabled = false;
         button.textContent = '無料で全体像を受け取る';
       }
     });
+    };
+    wire('rondo-subscribe-top', 'rondo-status-top');
+    wire('rondo-subscribe', 'rondo-status');
   })();
 </script>
 <script src="https://rondo.jinsei-korekara-lab.workers.dev/heat.js" data-page="touroku" defer></script>
